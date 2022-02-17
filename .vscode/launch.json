@@ -1,0 +1,20 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+
+    {
+      "name": "Python: Django",
+      "type": "python",
+      "python": "${env:HOME}/.cache/pypoetry/virtualenvs/django-htmx-alplinejs-demo-k8pLS8Es-py3.9",
+      "request": "launch",
+      "program": "${workspaceFolder}/manage.py",
+      "args": [
+        "runserver",
+      ],
+      "django": true,
+      "env": {
+        "DOPPLER_ENV": "1" // Enable doppler-env to inject secrets on start
+      }
+    }
+  ]
+}
