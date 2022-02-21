@@ -1,0 +1,11 @@
+  <li class="list-group-item d-flex justify-content-between align-items-center">
+    <a hx-get="{% url 'notecards:detail' notecard.pk %}" hx-target="#notesModal" class="btn btn-outline-primary">
+      {{ notecard.title }}
+    </a>
+    <div class="float-end">
+      <a href="" class="btn btn-primary btn-sm" hx-target="#notesModal" hx-get="{% url 'notecards:update' pk=notecard.pk %}"><i class="bi bi-pencil-square"></i></a>
+      <a href="" class="btn btn-danger btn-sm" hx-confirm="Are you sure you wish to delete this notecard?" hx-delete="{% url 'notecards:delete' pk=notecard.pk %}"><i class="bi bi-trash"></i></a>
+    </div>
+  </li>
+
+
