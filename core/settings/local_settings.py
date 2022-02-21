@@ -30,8 +30,6 @@ INTERNAL_IPS = [
 ]
 
 DJANGO_LOG_LEVEL = DEBUG
-
-DJANGO_LOG_LEVEL = DEBUG
 LOGGING = {
     "version": 1,
     "disable_existing_loggers": False,

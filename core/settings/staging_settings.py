@@ -2,7 +2,7 @@ import os
 from pathlib import Path
 from core.settings.base_settings import *
 
-print ("Loading *production* settings...")
+print ("Loading *staging* settings...")
 SECRET_KEY = os.getenv('SECRET_KEY')
 DEBUG = False
 ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS').split(',')

@@ -1,0 +1,39 @@
+version: '3.9'
+services:
+  db:
+    image: postgres:13.5
+    volumes:
+      - pg_data:/var/lib/postgresql/data/
+    environment:
+      - DOPPLER_TOKEN
+      - POSTGRES_USER
+      - POSTGRES_PASSWORD
+      - POSTGRES_DB
+    ports:
+      - 5432:5432
+    restart: always
+  web:
+    build: .
+    command: ./docker-entrypoint.sh
+    ports:
+      - 8000:8000
+    restart: on-failure
+    image: notecards-web:1.0
+    container_name: notecards-web
+    environment:
+      - ALLOWED_HOSTS
+      - DJANGO_ENV
+      - POSTGRES_DB
+      - POSTGRES_HOST
+      - POSTGRES_PASSWORD
+      - POSTGRES_PORT
+      - POSTGRES_USER
+      - SECRET_KEY
+      - SQL_ENGINE
+    depends_on:
+      - db
+    # volumes:
+    #   - .:/app
+
+volumes:
+  pg_data:
