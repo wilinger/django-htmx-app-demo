@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "django-htmx-alpinejs-demo"
+name = "django-htmx-app-demo"
 version = "0.1.0"
 description = ""
 authors = ["wilinger"]
@@ -12,8 +12,6 @@ django-crispy-forms = "^1.14.0"
 crispy-bootstrap5 = "^0.6"
 django-htmx = "^1.8.0"
 Unidecode = "^1.3.2"
-django-widget-tweaks = "^1.4.12"
-django-compressor = "^3.1"
 
 [tool.poetry.dev-dependencies]
 django-debug-toolbar = "^3.2.4"

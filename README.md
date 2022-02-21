@@ -1,1 +1,1 @@
-# django-htmx-alplinejs-demo
+# django-htmx-app-demo
