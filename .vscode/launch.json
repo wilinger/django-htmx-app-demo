@@ -5,16 +5,16 @@
     {
       "name": "Python: Django",
       "type": "python",
-      "python": "${env:HOME}/.cache/pypoetry/virtualenvs/django-htmx-app-demo-3Y-XrK7K-py3.9/bin/python",
+      "python": "${env:HOME}/.cache/pypoetry/virtualenvs/django-htmx-app-demo-LZbClTWl-py3.9/bin/python",
 
       "request": "launch",
-      "program": "${workspaceFolder}/manage.py",
+      "program": "${workspaceFolder}/src/manage.py",
       "args": [
         "runserver",
       ],
       "django": true,
       "env": {
-        "DOPPLER_ENV": "1" // Enable doppler-env to inject secrets on start
+        "DOPPLER_ENV": "1"
       }
     }
   ]
