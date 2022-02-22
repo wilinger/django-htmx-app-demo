@@ -39,7 +39,7 @@ def notecard_update(request, pk):
         form = NoteForm(request.POST, instance=notecard)
         if form.is_valid():
             form.save()
-            return HttpResponse(status=204, headers={'HX-Trigger': 'update_card_list'})
+            return HttpResponse(status=204, headers={'HX-Trigger': 'update_notecard_list'})
     else:
         form = NoteForm(instance=notecard)
     template_name = 'notecards/partials/notecard_form.html'
