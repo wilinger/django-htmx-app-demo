@@ -13,3 +13,7 @@ Just a simple Django notecard demo app
 * Simple Ajax requests without page refresh with [htmx](https://htmx.org/)
 * Simple frontend js stuff with [alpinejs](https://alpinejs.dev/)
 * Code quality and SAST scan with [SonarCloud](https://sonarcloud.io/)
+
+### To do
+* deploy on k8s and heroku
+* use Harbor as private registry for vulnerability scanning
