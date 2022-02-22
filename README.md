@@ -10,6 +10,6 @@ Just a simple Django notecard demo app
 
 ### Resources used
 * Secrets management with [Doppler](https://www.doppler.com/)
-* Simple Ajax requests without page with [htmx](https://htmx.org/)
+* Simple Ajax requests without page refresh with [htmx](https://htmx.org/)
 * Simple frontend js stuff with [alpinejs](https://alpinejs.dev/)
 * Code quality and SAST scan with [SonarCloud](https://sonarcloud.io/)
