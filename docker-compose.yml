@@ -23,7 +23,6 @@ services:
       - 8000:8000
     restart: on-failure
     image: notecards-web:1.0
-    container_name: notecards-web
     environment:
       - ALLOWED_HOSTS
       - DJANGO_ENV
