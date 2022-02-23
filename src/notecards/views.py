@@ -1,6 +1,5 @@
 from django.views.decorators.http import require_http_methods
 from django.views.generic import ListView, DetailView
-from django.http import HttpResponseBadRequest
 from django.shortcuts import get_object_or_404
 from django.http import HttpResponse
 from django.shortcuts import render
@@ -55,7 +54,8 @@ def notecard_update(request, pk):
     return render(request, template_name, context)
 
 @require_http_methods(["DELETE"])
-def notecard_delete(pk):
-    notecard = get_object_or_404(Notecard, pk=pk)
-    notecard.delete()
-    return HttpResponse(status=204, headers={'HX-Trigger': 'update_notecard_list'})
+def notecard_delete(request, pk):
+    if request.method == "DELETE":
+        notecard = get_object_or_404(Notecard, pk=pk)
+        notecard.delete()
+        return HttpResponse(status=204, headers={'HX-Trigger': 'update_notecard_list'})
