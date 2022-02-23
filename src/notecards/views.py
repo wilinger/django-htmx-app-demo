@@ -55,10 +55,7 @@ def notecard_update(request, pk):
     return render(request, template_name, context)
 
 @require_http_methods(["DELETE"])
-def notecard_delete(request, pk):
-    if request.method == "DELETE":
-        notecard = get_object_or_404(Notecard, pk=pk)
-        notecard.delete()
-        return HttpResponse(status=204, headers={'HX-Trigger': 'update_notecard_list'})
-    else:
-        return HttpResponseBadRequest("Invalid request")
+def notecard_delete(pk):
+    notecard = get_object_or_404(Notecard, pk=pk)
+    notecard.delete()
+    return HttpResponse(status=204, headers={'HX-Trigger': 'update_notecard_list'})

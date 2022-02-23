@@ -11,7 +11,7 @@ Just a simple Django notecard demo app
 ### Resources used
 * Secrets management with [Doppler](https://www.doppler.com/)
 * Simple Ajax requests without page refresh with [htmx](https://htmx.org/)
-* Code quality and SAST scan with [SonarCloud](https://sonarcloud.io/)
+* Code quality and SAST scan with [SonarCloud](https://sonarcloud.io/) to fix [security hotspots](https://github.com/wilinger/django-htmx-app-demo/pull/5)
 * Secrets scanning with [GitGuardian](https://www.gitguardian.com/)
 
 ### To do
