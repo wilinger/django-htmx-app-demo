@@ -12,10 +12,12 @@ def index(request):
     return render(request, 'notecards/index.html')
 
 class NotecardListView(ListView):
+    http_method_names = ['get']
     model = Notecard
     template_name = 'notecards/partials/notecard_list.html'
 
 class NotecardDetailView(DetailView):
+    http_method_names = ['get']
     model = Notecard
     template_name = 'notecards/partials/notecard_detail.html'
 
