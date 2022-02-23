@@ -1,11 +1,11 @@
-<ul class="list-group">
-  {% if notecard_list %}
-  {% for notecard in notecard_list %}
-    {% include "notecards/partials/notecard_item.html" %}
-  {% endfor %}
-  {% else %}
-  <div id="notecards-list-group" class="list-group-item">
-  No notecards created.
-  </div>
-  {% endif %}
-</ul>
+  <ul class="list-group">
+    {% if notecard_list %}
+    {% for notecard in notecard_list %}
+      {% include "notecards/partials/notecard_item.html" %}
+    {% endfor %}
+    {% else %}
+    <div id="notecards-list-group" class="list-group-item">
+    No notecards created.
+    </div>
+    {% endif %}
+  </ul>
