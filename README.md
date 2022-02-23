@@ -17,3 +17,4 @@ Just a simple Django notecard demo app
 ### To do
 * deploy on k8s and heroku
 * use Harbor as private registry for vulnerability scanning
+
