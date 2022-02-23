@@ -1,6 +1,5 @@
 from django.views.decorators.http import require_http_methods
 from django.views.generic import ListView, DetailView
-from django.http import HttpResponseBadRequest
 from django.shortcuts import get_object_or_404
 from django.http import HttpResponse
 from django.shortcuts import render
@@ -60,5 +59,3 @@ def notecard_delete(request, pk):
         notecard = get_object_or_404(Notecard, pk=pk)
         notecard.delete()
         return HttpResponse(status=204, headers={'HX-Trigger': 'update_notecard_list'})
-    else:
-        return HttpResponseBadRequest("Invalid request")
