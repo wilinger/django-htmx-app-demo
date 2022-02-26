@@ -24,7 +24,7 @@ jobs:
       - name: Install pip requirements 
         run: pip install -r src/requirements.txt
       - name: Snyk monitor 
-        run: snyk test --file=src/requirements.txt --package-manager=pip
+        run: snyk test --all-projects
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
 
