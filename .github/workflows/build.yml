@@ -30,7 +30,10 @@ jobs:
   build:
     name: Docker build and release
     runs-on: self-hosted
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    if: ${{ github.event.workflow_run.conclusion == 'success' &&
+      (contains(github.event.workflow_run.head_commit.message, 'BREAKING CHANGE:') ||
+        contains(github.event.workflow_run.head_commit.message, 'feat:') ||
+        contains(github.event.workflow_run.head_commit.message, 'fix:')) }}
 
     steps:
       - name: Checkout
