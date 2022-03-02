@@ -26,57 +26,58 @@ jobs:
       - name: show env
         run: echo $IMAGE_NAME
 
-  # build:
-  #   name: Docker build and release
-  #   runs-on: self-hosted
-  #   if: ${{ github.event.workflow_run.conclusion == 'success' }}
 
-  #   steps:
-  #     - name: Checkout
-  #       uses: actions/checkout@v2
-  #       with:
-  #         fetch-depth: 0
+  build:
+    name: Docker build and release
+    runs-on: self-hosted
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
 
-  #     - name: Semantic versioning
-  #       id: versioning
-  #       uses: PaulHatch/semantic-version@v4.0.3
-  #       with:
-  #         branch: main
-  #         tag_prefix: "v"
-  #         major_pattern: "BREAKING CHANGE:"
-  #         minor_pattern: "feat:"
-  #         format: "${major}.${minor}.${patch}"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
 
-  #     - name: Create release
-  #       uses: softprops/action-gh-release@v0.1.14
-  #       with:
-  #         draft: false
-  #         prerelease: false
-  #         tag_name: v${{ steps.versioning.outputs.version }}
-  #         name: v${{ steps.versioning.outputs.version }}
-  #         generate_release_notes: true
+      - name: Semantic versioning
+        id: versioning
+        uses: PaulHatch/semantic-version@v4.0.3
+        with:
+          branch: main
+          tag_prefix: "v"
+          major_pattern: "BREAKING CHANGE:"
+          minor_pattern: "feat:"
+          format: "${major}.${minor}.${patch}"
 
-  #     - name: Login to registry
-  #       uses: docker/login-action@v1
-  #       with:
-  #         registry: ${{ secrets.HARBOR_ADDR }}
-  #         username: ${{ secrets.HARBOR_USER }}
-  #         password: ${{ secrets.HARBOR_PASS }}
+      - name: Create release
+        uses: softprops/action-gh-release@v0.1.14
+        with:
+          draft: false
+          prerelease: false
+          tag_name: v${{ steps.versioning.outputs.version }}
+          name: v${{ steps.versioning.outputs.version }}
+          generate_release_notes: true
+
+      - name: Login to registry
+        uses: docker/login-action@v1
+        with:
+          registry: ${{ secrets.HARBOR_ADDR }}
+          username: ${{ secrets.HARBOR_USER }}
+          password: ${{ secrets.HARBOR_PASS }}
       
-  #     - name: Set up Docker Context for Buildx
-  #       id: buildx-context
-  #       run: |
-  #         docker context create builders
+      - name: Set up Docker Context for Buildx
+        id: buildx-context
+        run: |
+          docker context create builders
 
-  #     - name: Setup buildx
-  #       uses: docker/setup-buildx-action@v1
-  #       id: buildx
-  #       with:
-  #         version: latest
-  #         endpoint: builders
+      - name: Setup buildx
+        uses: docker/setup-buildx-action@v1
+        id: buildx
+        with:
+          version: latest
+          endpoint: builders
 
-  #     - name: Build and push
-  #       uses: docker/build-push-action@v2
-  #       with:
-  #         push: true
-  #         tags: ${{ env.REPO }}/${{ env.IMAGE_NAME }}:latest, ${{ env.REPO }}/${{ env.IMAGE_NAME }}:${{ steps.versioning.outputs.version }}
+      - name: Build and push
+        uses: docker/build-push-action@v2
+        with:
+          push: true
+          tags: ${{ env.REPO }}/${{ env.IMAGE_NAME }}:latest, ${{ env.REPO }}/${{ env.IMAGE_NAME }}:${{ steps.versioning.outputs.version }}
