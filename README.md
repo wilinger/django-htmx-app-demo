@@ -6,7 +6,7 @@
 <!-- ABOUT THE PROJECT -->
 ## Django notecard app
 
-Just a simple Django notecard demo app
+This is a simple Django notecard app to demonstrate security considerations in a CICD workflow using the tools below.
 
 ### Resources used
 * Secrets management with [Doppler](https://www.doppler.com/)
@@ -18,5 +18,4 @@ Just a simple Django notecard demo app
 
 ### To do
 * deploy on k8s and heroku
-* use Harbor as private registry for vulnerability scanning
 * unit testing with pytest
