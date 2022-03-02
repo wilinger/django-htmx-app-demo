@@ -2,6 +2,9 @@
 name: Build
 
 on:
+  push:
+    branches:
+      - main
   workflow_run:
     workflows: ["CI"]
     types:
@@ -24,7 +27,7 @@ jobs:
           fetch-depth: 0
 
       - name: Semantic versioning
-        id: versioning
+        id: semantic
         uses: PaulHatch/semantic-version@v4.0.3
         with:
           branch: main
@@ -38,8 +41,8 @@ jobs:
         with:
           draft: false
           prerelease: false
-          tag_name: v${{ steps.versioning.outputs.version }}
-          name: v${{ steps.versioning.outputs.version }}
+          tag_name: v${{ steps.semantic.outputs.version }}
+          name: v${{ steps.semantic.outputs.version }}
           generate_release_notes: true
 
       - name: Login to registry
