@@ -11,8 +11,8 @@ on:
       - completed
 
 env:
-  REPO: ${{ secrets.HARBOR_ADDR }}/zencluster
-  IMAGE_NAME: notecards
+  REPO: ${{ secrets.HARBOR_ADDR }}
+  IMAGE_NAME: ${{ github.repository }}
 
 jobs:
   build:
