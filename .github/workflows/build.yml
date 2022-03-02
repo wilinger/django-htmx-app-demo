@@ -26,6 +26,7 @@ jobs:
       - name: show env
         run: echo $IMAGE_NAME
 
+
   build:
     name: Docker build and release
     runs-on: self-hosted
