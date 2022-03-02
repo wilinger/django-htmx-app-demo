@@ -9,34 +9,44 @@ on:
     types: [opened, synchronize, reopened]
 
 jobs:
-  snyk:
-    name: Snyk
+  test:
+    name: test
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        python-version: [3.9]
     steps:
-      - uses: actions/checkout@v2
-      - uses: snyk/actions/setup@master
-      - uses: actions/setup-python@v2
-        with:
-          python-version: ${{ matrix.python-version }}
-      - name: Install pip requirements 
-        run: pip install -r src/requirements.txt
-      - name: Snyk monitor 
-        run: snyk test --all-projects
+      - name: Dump github context
+        run:   echo "$GITHUB_CONTEXT"
+        shell: bash
         env:
-          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+  
+  # snyk:
+  #   name: Snyk
+  #   runs-on: ubuntu-latest
+  #   strategy:
+  #     matrix:
+  #       python-version: [3.9]
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - uses: snyk/actions/setup@master
+  #     - uses: actions/setup-python@v2
+  #       with:
+  #         python-version: ${{ matrix.python-version }}
+  #     - name: Install pip requirements 
+  #       run: pip install -r src/requirements.txt
+  #     - name: Snyk monitor 
+  #       run: snyk test --all-projects
+  #       env:
+  #         SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
 
-  sonarcloud:
-    name: SonarCloud
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-      - name: SonarCloud Scan
-        uses: SonarSource/sonarcloud-github-action@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+  # sonarcloud:
+  #   name: SonarCloud
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #       with:
+  #         fetch-depth: 0
+  #     - name: SonarCloud Scan
+  #       uses: SonarSource/sonarcloud-github-action@master
+  #       env:
+  #         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  #         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}

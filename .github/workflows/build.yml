@@ -4,9 +4,7 @@ name: Build
 on:
   workflow_run:
     workflows: ["CI"]
-    branches:
-      - main
-      - master
+    branches: [main]
     types:
       - completed
 
