@@ -13,20 +13,6 @@ env:
   IMAGE_NAME: ${{ github.repository }}
 
 jobs:
-  test:
-    name: test
-    runs-on: ubuntu-latest
-    steps:
-      - name: Dump github context
-        run:   echo "$GITHUB_CONTEXT"
-        shell: bash
-        env:
-          GITHUB_CONTEXT: ${{ toJson(github) }}
-      
-      - name: show env
-        run: echo $IMAGE_NAME
-
-
   build:
     name: Docker build and release
     runs-on: self-hosted
