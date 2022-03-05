@@ -23,7 +23,8 @@ COPY ./src/pyproject.toml ./src/poetry.lock /app/
 RUN chmod +x ${POETRY_HOME}/bin/poetry && poetry install --no-dev --no-interaction
 
 # create django user
-RUN useradd -ms /bin/bash -d /app django && usermod -a -G django django
+RUN useradd -ms /bin/bash -d /app django && usermod -a -G django django && \
+    mkdir /app/collectedstatic
 
 # copy files over to app directory and set owner as django
 COPY --chown=django:django ./src /app/
