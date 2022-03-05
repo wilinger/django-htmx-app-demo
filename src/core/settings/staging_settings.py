@@ -6,7 +6,6 @@ print ("Loading *staging* settings...")
 SECRET_KEY = os.getenv('SECRET_KEY')
 DEBUG = False
 ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS').split(',')
-
 DATABASES = {
     'default': {
         "ENGINE": 'django.db.backends.postgresql',
@@ -18,11 +17,5 @@ DATABASES = {
     }
 }
 
-DBBACKUP_CLEANUP_KEEP = 10
-# DBBACKUP_STORAGE = 'django.core.files.storage.FileSystemStorage'
-# DBBACKUP_STORAGE_OPTIONS = {'location': '/var/backups'}
-
-DBBACKUP_STORAGE = 'storages.backends.dropbox.DropBoxStorage'
-DBBACKUP_STORAGE_OPTIONS = {
-    'oauth2_access_token': os.getenv('DBBACKUP_TOKEN'),
-}
+CSRF_COOKIE_DOMAIN = os.getenv('CSRF_COOKIE_DOMAIN')
+CSRF_TRUSTED_ORIGINS = os.getenv('CSRF_TRUSTED_ORIGINS').split(',')
