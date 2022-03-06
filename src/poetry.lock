@@ -81,6 +81,14 @@ django-crispy-forms = ">=1.13.0"
 test = ["pytest", "pytest-django"]
 
 [[package]]
+name = "dj-database-url"
+version = "0.5.0"
+description = "Use Database URLs in your Django Application."
+category = "main"
+optional = false
+python-versions = "*"
+
+[[package]]
 name = "django"
 version = "4.0.3"
 description = "A high-level Python web framework that encourages rapid development and clean, pragmatic design."
@@ -255,7 +263,7 @@ brotli = ["brotli"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "ba37faee643ec14ea8c05870896750cff8027edf4a123b8cfac18d7249e1f45c"
+content-hash = "918fe958bc2454cce38c8fd1435a9ad6b9f98a726ec99366d4f31f7bd298dc29"
 
 [metadata.files]
 asgiref = [
@@ -302,6 +310,10 @@ colorama = [
 crispy-bootstrap5 = [
     {file = "crispy-bootstrap5-0.6.tar.gz", hash = "sha256:e8c50daaf266d6127c7414f5669d5f2467b640d08b045ed9dd57e351d30609ae"},
     {file = "crispy_bootstrap5-0.6-py3-none-any.whl", hash = "sha256:ca5d2afc2a5d1cf12b8d057886a81002cdf7793afcbe0ce006c2294069c1f387"},
+]
+dj-database-url = [
+    {file = "dj-database-url-0.5.0.tar.gz", hash = "sha256:4aeaeb1f573c74835b0686a2b46b85990571159ffc21aa57ecd4d1e1cb334163"},
+    {file = "dj_database_url-0.5.0-py2.py3-none-any.whl", hash = "sha256:851785365761ebe4994a921b433062309eb882fedd318e1b0fcecc607ed02da9"},
 ]
 django = [
     {file = "Django-4.0.3-py3-none-any.whl", hash = "sha256:1239218849e922033a35d2a2f777cb8bee18bd725416744074f455f34ff50d0c"},
