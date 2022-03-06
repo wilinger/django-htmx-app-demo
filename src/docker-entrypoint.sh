@@ -7,6 +7,6 @@ poetry run python manage.py collectstatic --noinput
 
 # Start server
 echo "Starting server"
-poetry run python manage.py runserver 0.0.0.0:8000
+poetry run gunicorn core.wsgi:application --bind 0.0.0.0:8000
 
 exec "$@"

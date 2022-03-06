@@ -9,7 +9,7 @@ print ("Loading *local* settings...")
 
 SECRET_KEY = 'django-insecure-d7f*c#168!-u2zdv%z3+@#q%g9p=@sbfi8-sjgrme2i=olc(vo'
 DEBUG = True
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS += ['debug_toolbar']
 
