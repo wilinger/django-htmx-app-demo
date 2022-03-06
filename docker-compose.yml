@@ -32,11 +32,8 @@ services:
       - POSTGRES_PORT
       - POSTGRES_USER
       - SECRET_KEY
-      - SQL_ENGINE
     depends_on:
       - db
-    # volumes:
-    #   - .:/app
 
 volumes:
   pg_data:
