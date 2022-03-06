@@ -1,7 +1,7 @@
 ifdef DJANGO_ENV
 DJANGO_ENV := $(DJANGO_ENV)
 else
-DJANGO_ENV := local
+DJANGO_ENV := compose
 endif
 
 THIS_FILE := $(lastword $(MAKEFILE_LIST))

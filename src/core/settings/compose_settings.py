@@ -1,8 +1,7 @@
 import os
-from pathlib import Path
 from core.settings.base_settings import *
 
-print ("Loading *staging* settings...")
+print ("Loading *compose* settings...")
 SECRET_KEY = os.getenv('SECRET_KEY')
 DEBUG = False
 ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS').split(',')
@@ -17,5 +16,3 @@ DATABASES = {
     }
 }
 
-CSRF_COOKIE_DOMAIN = os.getenv('CSRF_COOKIE_DOMAIN')
-CSRF_TRUSTED_ORIGINS = os.getenv('CSRF_TRUSTED_ORIGINS').split(',')

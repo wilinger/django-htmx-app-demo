@@ -1,9 +1,11 @@
 import os
 
 env = os.getenv('DJANGO_ENV')
-if env == 'local':
-    from .local_settings import *
+if env == 'compose':
+    from .compose_settings import *
 elif env == 'staging':
     from .staging_settings import *
-else:
+elif env == 'prod':
     from .prod_settings import *
+else:
+    from .local_settings import *
