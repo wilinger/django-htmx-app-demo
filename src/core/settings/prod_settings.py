@@ -1,5 +1,5 @@
 import os
-from pathlib import Path
+import dj_database_url
 from core.settings.base_settings import *
 
 print ("Loading *production* settings...")
@@ -7,22 +7,13 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 DEBUG = False
 ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS').split(',')
 
+
 DATABASES = {
     'default': {
-        "ENGINE": 'django.db.backends.postgresql',
-        "NAME": os.environ.get("POSTGRES_DB", BASE_DIR / "db.sqlite3"),
-        "USER": os.environ.get("POSTGRES_USER", ""),
-        "PASSWORD": os.environ.get("POSTGRES_PASSWORD", ""),
-        "HOST": os.environ.get("POSTGRES_HOST", ""),
-        "PORT": os.environ.get("POSTGRES_PORT", ""),
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
-DBBACKUP_CLEANUP_KEEP = 10
-# DBBACKUP_STORAGE = 'django.core.files.storage.FileSystemStorage'
-# DBBACKUP_STORAGE_OPTIONS = {'location': '/var/backups'}
-
-DBBACKUP_STORAGE = 'storages.backends.dropbox.DropBoxStorage'
-DBBACKUP_STORAGE_OPTIONS = {
-    'oauth2_access_token': os.getenv('DBBACKUP_TOKEN'),
-}
+db_from_env = dj_database_url.config(conn_max_age=600)
+DATABASES['default'].update(db_from_env)
