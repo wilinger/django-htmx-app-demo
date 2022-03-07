@@ -25,12 +25,12 @@ services:
     image: notecards-web:1.0
     environment:
       - ALLOWED_HOSTS
+      - CSRF_COOKIE_DOMAIN
+      - CSRF_TRUSTED_ORIGINS
+      - DATABASE_URL
+      - DJANGO_DEBUG
       - DJANGO_ENV
-      - POSTGRES_DB
-      - POSTGRES_HOST
-      - POSTGRES_PASSWORD
-      - POSTGRES_PORT
-      - POSTGRES_USER
+      - PORT
       - SECRET_KEY
     depends_on:
       - db

@@ -20,7 +20,7 @@ RUN apt-get update && apt-get install -y apt-transport-https ca-certificates cur
 
 COPY ./src/pyproject.toml ./src/poetry.lock /app/
 
-RUN chmod +x ${POETRY_HOME}/bin/poetry && poetry install --no-dev --no-interaction
+RUN chmod +x ${POETRY_HOME}/bin/poetry && poetry install --no-interaction
 
 # create django user & created collectedstatic folder
 RUN useradd -ms /bin/bash -d /app django && usermod -a -G django django && \

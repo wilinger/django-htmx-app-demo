@@ -1,7 +1,9 @@
+import os
+import environ
 from pathlib import Path
 from django.contrib.messages import constants as messages
 
-BASE_DIR = Path(__file__).resolve().parent.parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent
 
 INSTALLED_APPS = [
     'django.contrib.auth',
@@ -53,7 +55,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'core.wsgi.application'
-
 
 # Password validation
 
@@ -115,3 +116,45 @@ MESSAGE_TAGS = {
     messages.WARNING: 'alert-warning',
     messages.ERROR: 'alert-danger',
     }
+
+
+### Environment settings ###
+
+env = environ.Env()
+
+print(f"Loading *{env('DJANGO_ENV')}* settings...")
+
+SECRET_KEY = env('SECRET_KEY')
+DEBUG = env.bool('DJANGO_DEBUG')
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
+
+ALLOWED_HOSTS = env.list('ALLOWED_HOSTS')
+
+if DEBUG:
+    print('debug is true')
+    INSTALLED_APPS += ['debug_toolbar']
+    MIDDLEWARE += ['debug_toolbar.middleware.DebugToolbarMiddleware']
+    INTERNAL_IPS = [
+        '127.0.0.1',
+    ]
+
+if 'DATABASE_URL' in env:
+    DATABASES['default'] = env.db_url()
+    print(f"db_INSIDE: {DATABASES}")
+
+if 'CSRF_COOKIE_DOMAIN' in env:
+    CSRF_COOKIE_DOMAIN = env('CSRF_COOKIE_DOMAIN')
+
+if 'CSRF_TRUSTED_ORIGINS' in env:
+    CSRF_TRUSTED_ORIGINS = env.list('CSRF_TRUSTED_ORIGINS')
+
+if 'SECURE_SSL_REDIRECT' in env:
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+    SECURE_SSL_REDIRECT = True
+
