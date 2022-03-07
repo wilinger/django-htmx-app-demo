@@ -14,7 +14,8 @@
       ],
       "django": true,
       "env": {
-        "DOPPLER_ENV": "1"
+        "DOPPLER_ENV": "1",
+        "DJANGO_ENV": "local"
       }
     }
   ]
