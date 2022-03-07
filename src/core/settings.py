@@ -137,7 +137,6 @@ DATABASES = {
 ALLOWED_HOSTS = env.list('ALLOWED_HOSTS')
 
 if DEBUG:
-    print('debug is true')
     INSTALLED_APPS += ['debug_toolbar']
     MIDDLEWARE += ['debug_toolbar.middleware.DebugToolbarMiddleware']
     INTERNAL_IPS = [
@@ -146,7 +145,7 @@ if DEBUG:
 
 if 'DATABASE_URL' in env:
     DATABASES['default'] = env.db_url()
-    print(f"db_INSIDE: {DATABASES}")
+    DATABASES['default']['CONN_MAX_AGE'] = 600
 
 if 'CSRF_COOKIE_DOMAIN' in env:
     CSRF_COOKIE_DOMAIN = env('CSRF_COOKIE_DOMAIN')
@@ -157,4 +156,3 @@ if 'CSRF_TRUSTED_ORIGINS' in env:
 if 'SECURE_SSL_REDIRECT' in env:
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
     SECURE_SSL_REDIRECT = True
-
