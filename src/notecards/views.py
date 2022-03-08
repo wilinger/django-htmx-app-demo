@@ -1,3 +1,4 @@
+import json
 from django.views.decorators.http import require_http_methods
 from django.views.generic import ListView, DetailView
 from django.shortcuts import get_object_or_404
@@ -25,8 +26,15 @@ def notecard_create(request):
     if request.method == "POST":
         form = NoteForm(request.POST)
         if form.is_valid():
-            form.save()
-            return HttpResponse(status=204, headers={'HX-Trigger': 'update_notecard_list'})
+            notecard = form.save()
+            return HttpResponse(
+                status=204,
+                headers={
+                    'HX-Trigger': json.dumps({
+                        'update_notecard_list': None,
+                        'showMessage': f'Notecard "{notecard.title}" added.'
+                    })
+                })
     else:
         form = NoteForm()
 
@@ -42,8 +50,14 @@ def notecard_update(request, pk):
     if request.method == "POST":
         form = NoteForm(request.POST, instance=notecard)
         if form.is_valid():
-            form.save()
-            return HttpResponse(status=204, headers={'HX-Trigger': 'update_notecard_list'})
+            notecard = form.save()
+            return HttpResponse(status=204,
+            headers={
+                    'HX-Trigger': json.dumps({
+                        'update_notecard_list': None,
+                        'showMessage': f'Notecard "{notecard.title}" updated.'
+                    })
+                })
     else:
         form = NoteForm(instance=notecard)
     template_name = 'notecards/partials/notecard_form.html'
@@ -58,4 +72,11 @@ def notecard_delete(request, pk):
     if request.method == "DELETE":
         notecard = get_object_or_404(Notecard, pk=pk)
         notecard.delete()
-        return HttpResponse(status=204, headers={'HX-Trigger': 'update_notecard_list'})
+        return HttpResponse(
+            status=204,
+            headers={
+                    'HX-Trigger': json.dumps({
+                        'update_notecard_list': None,
+                        'showMessage': f'Notecard "{notecard.title}" deleted.'
+                    })
+                })

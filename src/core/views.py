@@ -3,7 +3,7 @@ from django.views.decorators.http import require_http_methods
 
 @require_http_methods(["GET"])
 def index_view(request):
-    msg = "Welcome."
+    msg = "Welcome to the Notecards app."
 
     context = {
         "msg": msg
