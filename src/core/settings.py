@@ -1,4 +1,3 @@
-import os
 import environ
 from pathlib import Path
 from django.contrib.messages import constants as messages
@@ -156,4 +155,3 @@ if 'CSRF_TRUSTED_ORIGINS' in env:
 if 'SECURE_SSL_REDIRECT' in env:
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
     SECURE_SSL_REDIRECT = True
-    SESSION_COOKIE_SECURE = True
