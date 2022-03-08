@@ -16,7 +16,10 @@ A simple Django notecard app to demonstrate security considerations in a CICD wo
 * Code quality and SAST scan with [SonarCloud](https://sonarcloud.io/) to fix [security hotspots](https://github.com/wilinger/django-htmx-app-demo/pull/5)
 * Secrets scanning with [GitGuardian](https://www.gitguardian.com/)
 
+# Deployment
+* Example deployment on Kubernetes using sealed secrets to encrypt Kubernetes Secret token and Doppler to retrieve application secrets on [Kubernetes](https://github.com/wilinger/argocd-homelab/tree/main/kustomize/django-app)
+* Live deployment utilizing Doppler/Heroku integration to deploy on [Heroku](https://django-htmx-app-demo.herokuapp.com/)
+
 ### To do
 * detailed write up of tools
-* deploy on k8s and heroku
 * unit testing with pytest
