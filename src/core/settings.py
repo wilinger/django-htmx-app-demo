@@ -116,6 +116,12 @@ MESSAGE_TAGS = {
     messages.ERROR: 'alert-danger',
     }
 
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
 
 ### Environment settings ###
 
@@ -125,15 +131,8 @@ print(f"Loading *{env('DJANGO_ENV')}* settings...")
 
 SECRET_KEY = env('SECRET_KEY')
 DEBUG = env.bool('DJANGO_DEBUG')
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
-
 ALLOWED_HOSTS = env.list('ALLOWED_HOSTS')
+max_records = env.int('MAX_RECORDS')
 
 if DEBUG:
     INSTALLED_APPS += ['debug_toolbar']

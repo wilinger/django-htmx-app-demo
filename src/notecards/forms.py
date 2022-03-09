@@ -1,5 +1,7 @@
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Div, Field
+from django.core.exceptions import ValidationError
+from core.settings import max_records
 from django import forms
 from .models import Notecard
 
@@ -24,3 +26,10 @@ class NoteForm(forms.ModelForm):
                     css_class='row',
                 )
             )
+
+    def clean(self):
+        cleaned_data = super(NoteForm, self).clean()
+        title = cleaned_data.get('title')
+        if not Notecard.objects.filter(title=title).exists() and Notecard.objects.count() >= max_records:
+            raise ValidationError(f'Notecards has reached maxiumum limit of {max_records}. Please delete a notecard.')
+        return cleaned_data

@@ -6,6 +6,7 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from notecards.models import Notecard
 from .forms import NoteForm
+from django.core.exceptions import ValidationError
 
 @require_http_methods(["GET"])
 def index(request):
@@ -69,14 +70,13 @@ def notecard_update(request, pk):
 
 @require_http_methods(["DELETE"])
 def notecard_delete(request, pk):
-    if request.method == "DELETE":
-        notecard = get_object_or_404(Notecard, pk=pk)
-        notecard.delete()
-        return HttpResponse(
-            status=204,
-            headers={
-                    'HX-Trigger': json.dumps({
-                        'update_notecard_list': None,
-                        'showMessage': f'Notecard "{notecard.title}" deleted.'
-                    })
+    notecard = get_object_or_404(Notecard, pk=pk)
+    notecard.delete()
+    return HttpResponse(
+        status=204,
+        headers={
+                'HX-Trigger': json.dumps({
+                    'update_notecard_list': None,
+                    'showMessage': f'Notecard "{notecard.title}" deleted.'
                 })
+            })
