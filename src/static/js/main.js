@@ -18,3 +18,14 @@
         document.getElementById("notesModal").innerHTML = ""
     })
 })()
+
+;(function() {
+  const toastE1 = document.getElementById('toast')
+  const toastBody = document.getElementById('toast-body')
+  const toast = new bootstrap.Toast(toastE1, { delay: 2000 })
+
+  htmx.on("showMessage", (e) => {
+      toastBody.innerText = e.detail.value
+      toast.show()
+  })
+})()

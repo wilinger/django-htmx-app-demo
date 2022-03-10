@@ -6,46 +6,19 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="author" content="">
-    <meta name="keywords" content="">
-    <meta name="description" content="">
+    <meta name="author" content="Will">
+    <meta name="keywords" content="django, htmx">
+    <meta name="description" content="Django HTMX demo app">
     <title>{% block head_title %}Django htmx demo{% endblock head_title %}</title>
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href='{% static "css/bootstrap.min.css" %}'>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
-
-    
     {% block headcontent %}{% endblock %}
   </head>
   <body>
     {% include 'partials/navbar.html' %}
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6 offset-md-3">
-          <div id="messages">
-            {% for message in messages %}
-            <div x-data="{ show: true }"
-              x-init="() => {
-                setTimeout(() => show = false, 2000);
-              }"
-              x-show.transition.in="show"
-              x-transition.duration.1500ms>
-              <div class="{{ message|bootstrap_message_classes }} alert-dismissible" role="alert">
-                {{ message }}
-                <button type="button" class="btn-close btn-sm" data-bs-dismiss="alert" aria-label="{% trans 'close' %}"></button>
-              </div>
-            </div>
-            {% endfor %}
-          </div>
-        </div>
-      </div>
-    </div>
     {% block content %}{% endblock content %}
-    <!-- alpinejs -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.9.0/cdn.min.js"
-      integrity="sha512-91GIHlafcLQRUuQqlBCEF/qOecSTcBkSsaPWP3jgstLpwZ8orjgDlPgJshIq+x9t8wFcrGEjUKSMRN3K5ibq6Q=="
-      crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!-- bootstrap js bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"

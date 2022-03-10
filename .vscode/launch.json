@@ -5,7 +5,7 @@
     {
       "name": "Python: Django",
       "type": "python",
-      "python": "${env:HOME}/.cache/pypoetry/virtualenvs/django-htmx-app-demo-LZbClTWl-py3.9/bin/python",
+      "python": "${env:HOME}/.cache/pypoetry/virtualenvs/django-htmx-app-demo-3Y-XrK7K-py3.9/bin/python",
 
       "request": "launch",
       "program": "${workspaceFolder}/src/manage.py",
