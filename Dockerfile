@@ -15,19 +15,26 @@ ENV PATH="$POETRY_HOME/bin:$VENV_PATH/bin:$PATH"
 
 WORKDIR /app
 
-RUN apt-get update && apt-get install -y apt-transport-https ca-certificates curl gnupg netcat && \
+RUN apt-get update && \
+    apt-get install -y apt-transport-https ca-certificates curl gnupg netcat && \
     curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python
 
-COPY ./src/pyproject.toml ./src/poetry.lock /app/
+COPY ./docker-entrypoint.sh ./pyproject.toml ./poetry.lock /app/
 
-RUN chmod +x ${POETRY_HOME}/bin/poetry && poetry install --no-interaction
+# install poetry without creating virtual environment
+RUN poetry config virtualenvs.create false && \
+    poetry install --no-interaction
 
-# create django user & created collectedstatic folder
-RUN useradd -ms /bin/bash -d /app django && usermod -a -G django django && \
-    mkdir /app/collectedstatic && chown django:django /app/collectedstatic
+# create django user & collectedstatic folder
+RUN useradd -ms /bin/bash -d /app django && \
+    usermod -a -G django django && \
+    mkdir /app/collectedstatic
 
 # copy files over to app directory and set owner as django
-COPY --chown=django:django ./src /app/
+COPY ./src /app/
+
+# change owner to django
+RUN chown -R django:django /app
 
 # swtich to django user
 USER django

@@ -30,6 +30,7 @@ services:
       - DATABASE_URL
       - DJANGO_DEBUG
       - DJANGO_ENV
+      - MAX_RECORDS
       - PORT
       - SECRET_KEY
     depends_on:

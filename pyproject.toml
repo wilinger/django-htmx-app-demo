@@ -21,7 +21,31 @@ django-environ = "^0.8.1"
 django-debug-toolbar = "^3.2.4"
 black = "^22.1.0"
 doppler-env = "^0.2.2"
+pre-commit = "^2.17.0"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+py36 = true
+line-length = 88
+include = '\.pyi?$'
+exclude = '''
+/(
+    \.git
+    | \.hg
+    | \.mypy_cache
+    | \.tox
+    | \.venv
+    | _build
+    | buck-out
+    | build
+    | dist
+    | blib2to3
+    | tests/data
+)/
+'''
+
+[tool.isort]
+profile = "black"
