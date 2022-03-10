@@ -22,7 +22,7 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
       - name: Install pip requirements 
-        run: pip install -r src/requirements.txt
+        run: pip install -r requirements.txt
       - name: Snyk monitor 
         run: snyk test --all-projects
         env:
