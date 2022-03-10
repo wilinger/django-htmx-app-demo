@@ -58,20 +58,20 @@ WSGI_APPLICATION = "core.wsgi.application"
 
 # Password validation
 
-AUTH_PASSWORD_VALIDATORS = [
-    {
-        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
-    },
-    {
-        "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
-    },
-    {
-        "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",
-    },
-    {
-        "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
-    },
-]
+# AUTH_PASSWORD_VALIDATORS = [
+#     {
+#         "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
+#     },
+#     {
+#         "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
+#     },
+#     {
+#         "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",
+#     },
+#     {
+#         "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
+#     },
+# ]
 
 # Internationalization
 LANGUAGE_CODE = "en-us"
@@ -96,12 +96,7 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 AUTHENTICATION_BACKENDS = (
     # Needed to login by username in Django admin, regardless of `allauth`
     "django.contrib.auth.backends.ModelBackend",
-    # `allauth` specific authentication methods, such as login by e-mail
-    "allauth.account.auth_backends.AuthenticationBackend",
 )
-
-# django-tables2 settings
-DJANGO_TABLES2_TEMPLATE = "django_tables2/bootstrap4.html"
 
 # crispy_forms
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
@@ -132,7 +127,7 @@ print(f"Loading *{env('DJANGO_ENV')}* settings...")
 SECRET_KEY = env("SECRET_KEY")
 DEBUG = env.bool("DJANGO_DEBUG")
 ALLOWED_HOSTS = env.list("ALLOWED_HOSTS")
-max_records = env.int("MAX_RECORDS")
+MAX_RECORDS = env.int("MAX_RECORDS")
 
 if DEBUG:
     INSTALLED_APPS += ["debug_toolbar"]
