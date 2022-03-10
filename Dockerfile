@@ -17,7 +17,7 @@ WORKDIR /app
 
 RUN apt-get update && \
     apt-get install -y apt-transport-https ca-certificates curl gnupg netcat && \
-    curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python
+    curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/install-poetry.py | python
 
 COPY ./docker-entrypoint.sh ./pyproject.toml ./poetry.lock /app/
 
