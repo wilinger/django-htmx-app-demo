@@ -32,4 +32,5 @@ logs:
 ps:
 		docker-compose -f docker-compose.yml ps
 req:
-		poetry export --without-hashes -f requirements.txt --output requirements.txt
+		# export requirements.txt including dev for dependency scanning
+		poetry export --without-hashes --dev -f requirements.txt --output requirements.txt
