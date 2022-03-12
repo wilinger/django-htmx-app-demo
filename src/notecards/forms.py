@@ -45,6 +45,6 @@ class NoteForm(forms.ModelForm):
             and Notecard.objects.count() >= MAX_RECORDS
         ):
             raise ValidationError(
-                f"Notecards has reached maxiumum limit of {MAX_RECORDS}. Please delete a notecard."
+                f"Maximum limit of {MAX_RECORDS} notecards reached. Please delete a notecard."
             )
         return cleaned_data
