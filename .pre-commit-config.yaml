@@ -20,7 +20,7 @@ repos:
     rev: 6485bc2
     hooks:
       - id: poetry-check
-      - id: poetry-lock
+      # - id: poetry-lock
       - id: poetry-export
         args: ["--dev", "-f", "requirements.txt", "-o", "requirements.txt"]
 
