@@ -32,7 +32,7 @@ Using `python:3.10.2-slim` as base image
 Using `python:3.10.2-alpine3.15` as base image  
 <img width="533" alt="python3 10 2-alpine3 15" src="https://user-images.githubusercontent.com/17818801/158037558-08e47741-009f-46b5-8d0d-cdab42d5e392.png">
 
-Note that this is just an example of Harbor's capabilities using Trivy as an image vulnerability scanner. Whether an image with or without vulnerabilities should be used in a production environment will depend on various factors such false positives, severity, risk acceptance threshold and mitigating controls in place.
+Note that this is just a demonstration of Harbor's capabilities using Trivy as an image vulnerability scanner. Whether an image with or without vulnerabilities should be used in a production environment will depend on various factors such false positives, severity, risk threshold, mitigating controls in place, and container performance and stability.
 
 ### To do
 * detailed write up of tools
