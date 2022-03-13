@@ -15,7 +15,7 @@ help:
 build:
 		docker-compose -f docker-compose.yml build $(c)
 up:
-		doppler run -c dev -p django-htmx-app-demo -- docker-compose -f docker-compose.yml up -d $(c)
+		doppler run -- docker-compose -f docker-compose.yml up -d $(c)
 start:
 		doppler run -- docker-compose -f docker-compose.yml start $(c)
 down:
