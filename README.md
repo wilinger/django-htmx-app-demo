@@ -20,7 +20,7 @@ A simple Django notecard app to demonstrate security considerations in a CICD wo
 ### Deployment examples
 * [Docker-compose](docker-compose.yml) example
 * Example deployment on Kubernetes utilizing sealed secrets to encrypt Kubernetes Secret token and Doppler to retrieve application secrets on [Kubernetes](https://github.com/wilinger/argocd-homelab/tree/main/kustomize/django-app)
-* Live deployment utilizing Doppler/Heroku integration to deploy on [Heroku](https://django-htmx-app-demo.herokuapp.com/)
+* [Heroku](heroku.yml) example
 
 ### Image vulnerability scanning with Harbor
 
